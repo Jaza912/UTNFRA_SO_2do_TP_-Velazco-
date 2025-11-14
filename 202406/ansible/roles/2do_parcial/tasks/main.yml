@@ -1,0 +1,25 @@
+---
+- name: Crear estructura
+  file:
+    path: "/tmp/2do_parcial/{{ item }}"
+    state: directory
+  loop:
+    - alumno
+    - equipo
+
+- name: Crear archivo alumno
+  template:
+    src: datos_alumno.j2
+    dest: /tmp/2do_parcial/alumno/datos_alumno.txt
+
+- name: Crear archivo equipo
+  template:
+    src: datos_equipo.j2
+    dest: /tmp/2do_parcial/equipo/datos_equipo.txt
+
+- name: Sudoers 2PSupervisores
+  lineinfile:
+    path: /etc/sudoers
+    regexp: '^%2PSupervisores'
+    line: '%2PSupervisores ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'

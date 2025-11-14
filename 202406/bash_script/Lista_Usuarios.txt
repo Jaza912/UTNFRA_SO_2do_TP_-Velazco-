@@ -1,0 +1,3 @@
+2Puser1,2Pgrupo1
+2Puser2,2Pgrupo2
+2Psupervisor,2PSupervisores
